@@ -389,6 +389,13 @@ func TestIdentifyFindFormatByStreamContent(t *testing.T) {
 			compressorName:        ".zz",
 			wantFormatName:        ".zz",
 		},
+		{
+			name:                  "should recognize lzma",
+			openCompressionWriter: Lzma{}.OpenWriter,
+			content:               []byte("this is text"),
+			compressorName:        ".lzma",
+			wantFormatName:        ".lzma",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
